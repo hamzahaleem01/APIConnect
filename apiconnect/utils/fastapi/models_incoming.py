@@ -12,8 +12,8 @@ class ModelIncoming(BaseModel):
         json_schema_extra={
             "example": {
                 "twitter_user": "TwitterDev",
-                "source_of_tweet": "iPhone",
-                "tweet": "technology",
+                "source_of_tweet": "Twitter for Android",
+                "tweet_filter": "technology",
             },
         }
     )
