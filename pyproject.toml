@@ -21,7 +21,8 @@ dependencies = [
   "pydantic == 2.4.2",
   "pydantic-settings == 2.0.3",
   "sqlalchemy == 2.0.22",
-  "uvicorn == 0.23.2"
+  "uvicorn == 0.23.2",
+  "greenlet == 3.0.3"
 ]
 
 [project.optional-dependencies]
