@@ -1,6 +1,8 @@
-from apiconnect.utils.database.connector import DBconnector
 from typing import Optional
+
 from sqlalchemy import select
+
+from apiconnect.utils.database.connector import DBconnector
 from apiconnect.utils.database.orms import Tweets
 from apiconnect.utils.database.utils import query_executor
 

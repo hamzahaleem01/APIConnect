@@ -3,9 +3,9 @@ import logging
 import uvicorn
 from fastapi import FastAPI
 
-from apiconnect.settings import Settings
 import apiconnect.api.endpoints as endpoint
 import apiconnect.api.startup_shutdown as startup_shutdown
+from apiconnect.settings import Settings
 
 logger = logging.getLogger()
 

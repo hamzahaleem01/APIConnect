@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from apiconnect.utils.database.connector import DBconnector
 
 from apiconnect.settings import Settings
+from apiconnect.utils.database.connector import DBconnector
 
 
 def create_events_startup_shutdown(app: FastAPI, env_settings: Settings) -> None:
