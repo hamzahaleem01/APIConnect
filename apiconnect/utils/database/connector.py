@@ -4,7 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
-from rec_engine_aircraft_library import settings
+from apiconnect.settings import Settings
 
 logger = logging.getLogger()
 
@@ -14,9 +14,9 @@ class DBconnector:
 
     __db_url: str
     __engine: AsyncEngine
-    async_session_factory: sessionmaker[AsyncSession]  # type: ignore
+    async_session_factory: sessionmaker[AsyncSession]
 
-    def __init__(self, env_settings: settings.RecEngineAircraftSettings):
+    def __init__(self, env_settings: Settings):
         """Initialize asynchronous engine, s.t. asynchronous may be created using the async_session_factory."""
         self.__db_url = (
             f"postgresql+asyncpg://{env_settings.DB_USER}:{env_settings.DB_PASSWORD}"
@@ -34,14 +34,3 @@ class DBconnector:
     def get_engine(self) -> AsyncEngine:
         """Get private variable __engine."""
         return self.__engine
-
-    async def connection_check(self) -> bool:
-        """Check the connection with the database."""
-        try:
-            async with self.__engine.begin() as conn:
-                await conn.execute(select(1))  # type: ignore
-            logger.info("Database connection is alive.")
-            return True
-        except Exception as e:
-            logger.error(f"Error during database health check: {e}")
-            return False

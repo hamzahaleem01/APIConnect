@@ -1,7 +1,11 @@
 from apiconnect.utils.database.connector import DBconnector
+from typing import Optional
 
 
 async def wrapper_general_twitter(
-    user: str, source: str, filter: str, connector: DBconnector
+    user: Optional[str],
+    source: Optional[str],
+    filter: Optional[str],
+    connector: DBconnector,
 ):
-    pass
+    return user

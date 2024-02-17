@@ -14,5 +14,5 @@ async def get_recommendations(request: Request, body: ModelIncoming):
         user=body.twitter_user,
         source=body.source_of_tweet,
         filter=body.tweet_filter,
-        db_connector=request.app.state.db_connector,
+        connector=request.app.state.db_connector,
     )

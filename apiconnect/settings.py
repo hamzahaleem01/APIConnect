@@ -1,14 +1,8 @@
-import logging
-
-from pydantic_settings import SettingsConfigDict
-
-logger = logging.getLogger()
+from pydantic_settings import BaseSettings  # type: ignore
 
 
-class Settings:
+class Settings(BaseSettings):
     """Instance which imports and provides data from the .env file."""
-
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     host_address: str = "localhost"
     DB_HOST: str = str()
@@ -16,4 +10,9 @@ class Settings:
     DB_USER: str = str()
     DB_PASSWORD: str = str()
     DB_PORT: str = str()
-    DB_SSL_MODE: str = "prefer"
+    DB_SSL_MODE: str = str()
+
+    class Config:
+        """Instance which imports data from .env file."""
+
+        env_file = ".env"

@@ -5,6 +5,7 @@ from fastapi import FastAPI
 
 from apiconnect.settings import Settings
 import apiconnect.api.endpoints as endpoint
+import apiconnect.api.startup_shutdown as startup_shutdown
 
 logger = logging.getLogger()
 
@@ -14,6 +15,7 @@ def create_app(env_set=Settings()) -> FastAPI:
     app = FastAPI(title="APIConnect")
 
     app.include_router(endpoint.router)
+    startup_shutdown.create_events_startup_shutdown(app, env_set)
 
     return app
 
